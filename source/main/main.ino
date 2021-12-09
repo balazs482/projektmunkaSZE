@@ -4,17 +4,17 @@
 #include "screen.h"
 #include "page.h"
 
-///GPIO names
+//GPIO names
 #define light A0
 #define motion 10
 #define upButton 12
 #define downButton 13
 #define okButton 14
 
-///constant algorythm variables
+//constant algorythm variables
 constexpr short monitoringRefreshRate = 1;
 
-///algorythm variables
+//algorythm variables
 short screenTimer, bulbTimer, lightTreshold;
 bool bulb = false, powerSaveMode = true, autoMode;
 unsigned long lastTriggerTime = 0, buttonPressTime = 0, monitoringRefreshTime = 0;
@@ -29,15 +29,15 @@ MenuPage screenTimerPage = MenuPage("SCREEN TIMER");
 MenuPage overridePage = MenuPage("OVERRIDE MODE");
 MonitoringPage monitoringPage = monitoringPage.getInstance();
 
-///setup
+//setup
 void setup()
 {
-  ///screen initialization
+  //screen initialization
   Wire.begin();
   oled.init();
   oled.clearDisplay();
 
-  ///accessing pins
+  //accessing pins
   pinMode(upButton, INPUT);
   pinMode(downButton, INPUT);
   pinMode(okButton, INPUT);
@@ -46,7 +46,7 @@ void setup()
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
 
-  ///filling pages
+  //filling pages
   mainMenuPage.addOpt("Bulb timer");
   mainMenuPage.addOpt("Light sens");
   mainMenuPage.addOpt("Screen timer");
@@ -76,7 +76,7 @@ void setup()
   monitoringPage.setLightValuePointer(&lightValue);
   monitoringPage.setMotionStatePointer(&motionState);
 
-  ///assigning values from page options to optional values
+  //assigning values from page options to optional values
   lightTresholdPage.setArrowPos(2);
   lightTreshold = lightTresholdPage.getOptValue(lightTresholdPage.getArrowPos());
 
@@ -89,7 +89,7 @@ void setup()
   overridePage.setArrowPos(0);
   autoMode = false;
 
-  ///setting baud rate
+  //setting baud rate
   Serial.begin(115200);
 }
 
@@ -98,11 +98,11 @@ Page* currentPage = landingPage;
 
 void loop()
 {
-  ///sensor read
+  //sensor read
   lightValue = analogRead(light); //<store light sensor value
   motionState = digitalRead(motion); //<store motion sensor state
 
-  ///button actions
+  //button actions
   if (digitalRead(upButton) && !powerSaveMode) //<if up button is pressed and screen is on
   {
     buttonPressTime = millis(); //<store up button press time
@@ -168,14 +168,14 @@ void loop()
     currentPage->printPage();
   }
 
-  ///refresh if monitoring page
+  //refresh if monitoring page
   if (currentPage == &monitoringPage && (unsigned long)(millis() - monitoringRefreshTime) > monitoringRefreshRate * 1000) //<if monitoring page is active and enough time has elapsed since the last refresh
   {
     currentPage->refreshPage();
     monitoringRefreshTime = millis();
   }
 
-  ///powerSaveMode activation
+  //powerSaveMode activation
   if (!powerSaveMode && (unsigned long)(millis() - buttonPressTime) > screenTimer * 1000) //<if screen is on and enough time has elapsed since the last button press
   {
     powerSaveMode = true;
@@ -186,7 +186,7 @@ void loop()
 
   if (autoMode)
   {
-    ///trigger bulb
+    //trigger bulb
     if (motionState) //<if motion has just been detected
     {
       lastTriggerTime = millis(); //<store motion detection time
@@ -198,7 +198,7 @@ void loop()
       }
     }
   
-    ///turn off bulb
+    //turn off bulb
     else if (bulb && (unsigned long)(millis() - lastTriggerTime) > bulbTimer * 1000) //<else if bulb is on and enough time has elapsed since the last trigger
     {
       bulb = false;
@@ -206,7 +206,7 @@ void loop()
     }
   }
 
-  ///serial monitoring values
+  //serial monitoring values
   std::cout << "Bulb: " << (bulb ? "ON" : "OFF")
             << ", Motion: " << (motionState ? "YES" : "NO")
             << ", Time: " << (unsigned long)(millis() - lastTriggerTime) / 1000 << " seconds"
