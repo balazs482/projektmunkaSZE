@@ -86,22 +86,22 @@ public:
    */
   void moveArrow(bool upDirection)
   {
-    Screen::writeLine(arrowPos + 1, "   " + opts[arrowPos].first); /**< Rewrites the line where the arrow has been displayed, without the arrow. With well working screens, only the affacted part could be rewritten. */
-    if (upDirection && arrowPos == 0) arrowPos = opts.size() - 1; /**< If the first option has been selected and the arrow moves up, the last option will be selected. */
-    else if (!upDirection && arrowPos == opts.size() - 1) arrowPos = 0; /**< If the last option has been selected and the arrow moves down, the first option will be selected. */
-    else upDirection ? arrowPos-- : arrowPos++; /**< If no circular step happens, the neighbouring option in the proper direction will be selected. */
-    Screen::writeLine(arrowPos + 1, " > " + opts[arrowPos].first); /**< Rewrites the line where the arrow should be displayed, with the arrow. With well working screens, only the affacted part could be rewritten. */
+    Screen::writeLine(arrowPos + 1, "   " + opts[arrowPos].first); //Rewrites the line where the arrow has been displayed, without the arrow. With well working screens, only the affacted part could be rewritten.
+    if (upDirection && arrowPos == 0) arrowPos = opts.size() - 1; //If the first option has been selected and the arrow moves up, the last option will be selected.
+    else if (!upDirection && arrowPos == opts.size() - 1) arrowPos = 0; //If the last option has been selected and the arrow moves down, the first option will be selected.
+    else upDirection ? arrowPos-- : arrowPos++; //If no circular step happens, the neighbouring option in the proper direction will be selected.
+    Screen::writeLine(arrowPos + 1, " > " + opts[arrowPos].first); //Rewrites the line where the arrow should be displayed, with the arrow. With well working screens, only the affacted part could be rewritten.
   }
   /**
    * Used to display a Page on the screen.
    */
   void printPage()
   {
-    Screen::clear(); /**< Clears the screen. It is done for insuring the lack of glitches on the screen. With well working screens, it only adds unnecessary delay. */
-    Screen::writeLine(0, title); /**< Writes the title in the first row. */
-    for (short line = 1; line <= opts.size(); line++) Screen::writeLine(line, "   " + opts[line - 1].first); /**< Writes each option's text part. */
-    for (short line = opts.size() + 1; line < HEIGHT; line++) Screen::writeLine(line, ""); /**< Fills all other lines */
-    Screen::writeLine(arrowPos + 1, " > " + opts[arrowPos].first); /**< Rewrites the line where the arrow should be displayed, with the arrow. With well working screens, only the affacted part could be rewritten. */
+    Screen::clear(); //Clears the screen. It is done for insuring the lack of glitches on the screen. With well working screens, it only adds unnecessary delay.
+    Screen::writeLine(0, title); //Writes the title in the first row.
+    for (short line = 1; line <= opts.size(); line++) Screen::writeLine(line, "   " + opts[line - 1].first); //Writes each option's text part.
+    for (short line = opts.size() + 1; line < HEIGHT; line++) Screen::writeLine(line, ""); //Fills all other lines.
+    Screen::writeLine(arrowPos + 1, " > " + opts[arrowPos].first); //Rewrites the line where the arrow should be displayed, with the arrow. With well working screens, only the affacted part could be rewritten.
   }
 };
 
@@ -126,13 +126,13 @@ protected:
   static MonitoringPage* instance; /**< Pointer to the only instance that this class should have. */
 public:
   /**
-   * Used to get the only instance of this class. If it does not exist yet, it is created.
+   * Used to get the only instance of this class.
    * @return The only instance of this class.
    */
   static MonitoringPage getInstance()
   {
-    if(!instance) instance = new MonitoringPage("MONITORING");
-    return *instance;
+    if(!instance) instance = new MonitoringPage("MONITORING"); //If it does not exist yet, it is created.
+    return *instance; //Returning through the pointer.
   }
   /**
    * Used to set the motionStatePointer.
@@ -154,24 +154,24 @@ public:
    */
   void refreshPage()
   {
-    *motionStatePointer ? Screen::writeLine(2, "  YES") : Screen::writeLine(2, "  NO"); /**< Rewrites the line, where the motion state is displayed, depending on the value. It uses "YES" and "NO" options. */
-    Screen::writeLine(4, "  " + std::to_string((unsigned long)(millis() - *lastTriggerTimePointer) / 1000) + " sec"); /**< Rewrites the line, where the last trigger time is displayed, depending on the value. It uses seconds. */
-    Screen::writeLine(6, "  " + std::to_string(*lightValuePointer)); /**< Rewrites the line, where the light value is displayed, depending on the value. It uses the raw numeric value. */
+    *motionStatePointer ? Screen::writeLine(2, "  YES") : Screen::writeLine(2, "  NO"); //Rewrites the line, where the motion state is displayed, depending on the value. It uses "YES" and "NO" options.
+    Screen::writeLine(4, "  " + std::to_string((unsigned long)(millis() - *lastTriggerTimePointer) / 1000) + " sec"); //Rewrites the line, where the last trigger time is displayed, depending on the value. It uses seconds.
+    Screen::writeLine(6, "  " + std::to_string(*lightValuePointer)); //Rewrites the line, where the light value is displayed, depending on the value. It uses the raw numeric value.
   }
   /**
    * Used to display the Page on the screen.
    */
   void printPage()
   {
-    Screen::clear(); /**< Clears the screen. It is done for insuring the lack of glitches on the screen. With well working screens, it can be replaced with rewriting the unused and the refreshing lines with nothing. */
-    Screen::writeLine(0, title); /**< Writes the title in the first row. */
-    Screen::writeLine(1, " Motion:"); /**< Writes the name "Motion" above said information. */
-    Screen::writeLine(3, " Last trigger:"); /**< Writes the name "Last trigger" above said information. */
-    Screen::writeLine(5, " Light value:"); /**< Writes the name "Light value" above said information. */
-    Screen::writeLine(HEIGHT - 1, std::string(WIDTH - std::string("> Back").length(), ' ') + "> Back"); /**< Writes the "Back" functionality interface element with a fixed selection arrow. */
-    refreshPage(); /**Uses refreshPage() to write the above mentioned pieces of information. */
+    Screen::clear(); //Clears the screen. It is done for insuring the lack of glitches on the screen. With well working screens, it can be replaced with rewriting the unused and the refreshing lines with nothing.
+    Screen::writeLine(0, title); //Writes the title in the first row.
+    Screen::writeLine(1, " Motion:"); //Writes the name "Motion" above said information.
+    Screen::writeLine(3, " Last trigger:"); //Writes the name "Last trigger" above said information.
+    Screen::writeLine(5, " Light value:"); //Writes the name "Light value" above said information.
+    Screen::writeLine(HEIGHT - 1, std::string(WIDTH - std::string("> Back").length(), ' ') + "> Back"); //Writes the "Back" functionality interface element with a fixed selection arrow.
+    refreshPage(); //Uses refreshPage() to write the above mentioned pieces of information.
   }
 };
-MonitoringPage* MonitoringPage::instance = 0; /**< Ensures the singleton status. */
+MonitoringPage* MonitoringPage::instance = 0; //Ensures the singleton status.
 
 #endif

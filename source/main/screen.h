@@ -19,9 +19,9 @@ public:
    */
 	static void writeLine(short lineNum, std::string input)
 	{
-    input += std::string(WIDTH - input.length(), ' ');
-		oled.setTextXY(lineNum, 0);
-    oled.putString(input.c_str());
+    input += std::string(WIDTH - input.length(), ' '); //Complements the line with spaces to fill the width of the screen.
+		oled.setTextXY(lineNum, 0); //Sets the starting position of the line.
+    oled.putString(input.c_str()); //Writes the line.
 	}
   /**
    * Clears the screen. All characters will disappear.
