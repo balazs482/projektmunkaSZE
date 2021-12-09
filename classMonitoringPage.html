@@ -160,12 +160,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Used to get the only instance of this class. If it does not exist yet, it is created. </p><dl class="section return"><dt>Returns</dt><dd>The only instance of this class. </dd></dl>
+<p>Used to get the only instance of this class. </p><dl class="section return"><dt>Returns</dt><dd>The only instance of this class. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="page_8h_source.html#l00132">132</a> of file <a class="el" href="page_8h_source.html">page.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="classMonitoringPage.html#a6bf50c5fd8c5b53876c8661fdcae19d3">instance</a>) <a class="code" href="classMonitoringPage.html#a6bf50c5fd8c5b53876c8661fdcae19d3">instance</a> = <span class="keyword">new</span> <a class="code" href="classMonitoringPage.html">MonitoringPage</a>(<span class="stringliteral">&quot;MONITORING&quot;</span>);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">return</span> *<a class="code" href="classMonitoringPage.html#a6bf50c5fd8c5b53876c8661fdcae19d3">instance</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="classMonitoringPage.html#a6bf50c5fd8c5b53876c8661fdcae19d3">instance</a>) <a class="code" href="classMonitoringPage.html#a6bf50c5fd8c5b53876c8661fdcae19d3">instance</a> = <span class="keyword">new</span> <a class="code" href="classMonitoringPage.html">MonitoringPage</a>(<span class="stringliteral">&quot;MONITORING&quot;</span>); <span class="comment">//If it does not exist yet, it is created.</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">return</span> *<a class="code" href="classMonitoringPage.html#a6bf50c5fd8c5b53876c8661fdcae19d3">instance</a>; <span class="comment">//Returning through the pointer.</span></div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
@@ -193,25 +193,18 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Used to display the <a class="el" href="classPage.html">Page</a> on the screen. </p>
-<p>&lt; Clears the screen. It is done for insuring the lack of glitches on the screen. With well working screens, it can be replaced with rewriting the unused and the refreshing lines with nothing.</p>
-<p>&lt; Writes the title in the first row.</p>
-<p>&lt; Writes the name "Motion" above said information.</p>
-<p>&lt; Writes the name "Last trigger" above said information.</p>
-<p>&lt; Writes the name "Light value" above said information.</p>
-<p>&lt; Writes the "Back" functionality interface element with a fixed selection arrow.</p>
-<p>Uses <a class="el" href="classMonitoringPage.html#a871107791a60c1b5dae7f5b6cf9a321f">refreshPage()</a> to write the above mentioned pieces of information.</p>
 
 <p>Reimplemented from <a class="el" href="classPage.html#a2ee3bb8e956c87fa76b2d12633e24f38">Page</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="page_8h_source.html#l00164">164</a> of file <a class="el" href="page_8h_source.html">page.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="classScreen.html#ab32bde1aa5f6e856b493efc2e9d5f991">Screen::clear</a>(); </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(0, <a class="code" href="classPage.html#aa91345488f39e9592ab3b411f42e1db5">title</a>); </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(1, <span class="stringliteral">&quot; Motion:&quot;</span>); </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(3, <span class="stringliteral">&quot; Last trigger:&quot;</span>); </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(5, <span class="stringliteral">&quot; Light value:&quot;</span>); </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(HEIGHT - 1, std::string(WIDTH - std::string(<span class="stringliteral">&quot;&gt; Back&quot;</span>).length(), <span class="charliteral">&#39; &#39;</span>) + <span class="stringliteral">&quot;&gt; Back&quot;</span>); </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <a class="code" href="classMonitoringPage.html#a871107791a60c1b5dae7f5b6cf9a321f">refreshPage</a>(); </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="classScreen.html#ab32bde1aa5f6e856b493efc2e9d5f991">Screen::clear</a>(); <span class="comment">//Clears the screen. It is done for insuring the lack of glitches on the screen. With well working screens, it can be replaced with rewriting the unused and the refreshing lines with nothing.</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(0, <a class="code" href="classPage.html#aa91345488f39e9592ab3b411f42e1db5">title</a>); <span class="comment">//Writes the title in the first row.</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(1, <span class="stringliteral">&quot; Motion:&quot;</span>); <span class="comment">//Writes the name &quot;Motion&quot; above said information.</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(3, <span class="stringliteral">&quot; Last trigger:&quot;</span>); <span class="comment">//Writes the name &quot;Last trigger&quot; above said information.</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(5, <span class="stringliteral">&quot; Light value:&quot;</span>); <span class="comment">//Writes the name &quot;Light value&quot; above said information.</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(HEIGHT - 1, std::string(WIDTH - std::string(<span class="stringliteral">&quot;&gt; Back&quot;</span>).length(), <span class="charliteral">&#39; &#39;</span>) + <span class="stringliteral">&quot;&gt; Back&quot;</span>); <span class="comment">//Writes the &quot;Back&quot; functionality interface element with a fixed selection arrow.</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <a class="code" href="classMonitoringPage.html#a871107791a60c1b5dae7f5b6cf9a321f">refreshPage</a>(); <span class="comment">//Uses refreshPage() to write the above mentioned pieces of information.</span></div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
@@ -239,17 +232,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Used to refresh the dynamic information on the screen. </p>
-<p>&lt; Rewrites the line, where the motion state is displayed, depending on the value. It uses "YES" and "NO" options.</p>
-<p>&lt; Rewrites the line, where the last trigger time is displayed, depending on the value. It uses seconds.</p>
-<p>&lt; Rewrites the line, where the light value is displayed, depending on the value. It uses the raw numeric value.</p>
 
 <p>Reimplemented from <a class="el" href="classPage.html#ab4fb515905b74c5dbfe7df1970ce8701">Page</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="page_8h_source.html#l00155">155</a> of file <a class="el" href="page_8h_source.html">page.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    *motionStatePointer ? <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(2, <span class="stringliteral">&quot;  YES&quot;</span>) : <a class="code" href="classScreen.html">Screen</a>::writeLine(2, <span class="stringliteral">&quot;  NO&quot;</span>); </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(4, <span class="stringliteral">&quot;  &quot;</span> + std::to_string((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>)(millis() - *lastTriggerTimePointer) / 1000) + <span class="stringliteral">&quot; sec&quot;</span>); </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(6, <span class="stringliteral">&quot;  &quot;</span> + std::to_string(*lightValuePointer)); </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    *motionStatePointer ? <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(2, <span class="stringliteral">&quot;  YES&quot;</span>) : <a class="code" href="classScreen.html">Screen</a>::writeLine(2, <span class="stringliteral">&quot;  NO&quot;</span>); <span class="comment">//Rewrites the line, where the motion state is displayed, depending on the value. It uses &quot;YES&quot; and &quot;NO&quot; options.</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(4, <span class="stringliteral">&quot;  &quot;</span> + std::to_string((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>)(millis() - *lastTriggerTimePointer) / 1000) + <span class="stringliteral">&quot; sec&quot;</span>); <span class="comment">//Rewrites the line, where the last trigger time is displayed, depending on the value. It uses seconds.</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(6, <span class="stringliteral">&quot;  &quot;</span> + std::to_string(*lightValuePointer)); <span class="comment">//Rewrites the line, where the light value is displayed, depending on the value. It uses the raw numeric value.</span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
@@ -379,8 +369,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Pointer to the only instance that this class should have.</p>
-<p>Ensures the singleton status. </p>
+<p>Pointer to the only instance that this class should have. </p>
 
 <p class="definition">Definition at line <a class="el" href="page_8h_source.html#l00126">126</a> of file <a class="el" href="page_8h_source.html">page.h</a>.</p>
 

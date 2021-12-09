@@ -147,7 +147,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructor. @title Title of the page. </p>
+<p>Constructor. @parameter title Title of the page. </p>
 
 <p class="definition">Definition at line <a class="el" href="page_8h_source.html#l00060">60</a> of file <a class="el" href="page_8h_source.html">page.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;: <a class="code" href="classPage.html#a7fe7f9c1a516cc8daa4579b3105d9f64">Page</a>(<a class="code" href="classPage.html#aa91345488f39e9592ab3b411f42e1db5">title</a>) {}</div>
@@ -299,21 +299,16 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>&lt; Rewrites the line where the arrow has been displayed, without the arrow. With well working screens, only the affacted part could be rewritten.</p>
-<p>&lt; If the first option has been selected and the arrow moves up, the last option will be selected.</p>
-<p>&lt; If the last option has been selected and the arrow moves down, the first option will be selected.</p>
-<p>&lt; If no circular step happens, the neighbouring option in the proper direction will be selected.</p>
-<p>&lt; Rewrites the line where the arrow should be displayed, with the arrow. With well working screens, only the affacted part could be rewritten.</p>
 
 <p>Reimplemented from <a class="el" href="classPage.html#ac01366a26fc8b42f315a5739f7a1941a">Page</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="page_8h_source.html#l00087">87</a> of file <a class="el" href="page_8h_source.html">page.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(arrowPos + 1, <span class="stringliteral">&quot;   &quot;</span> + opts[arrowPos].first); </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (upDirection &amp;&amp; arrowPos == 0) arrowPos = opts.size() - 1; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!upDirection &amp;&amp; arrowPos == opts.size() - 1) arrowPos = 0; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">else</span> upDirection ? arrowPos-- : arrowPos++; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(arrowPos + 1, <span class="stringliteral">&quot; &gt; &quot;</span> + opts[arrowPos].first); </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(arrowPos + 1, <span class="stringliteral">&quot;   &quot;</span> + opts[arrowPos].first); <span class="comment">//Rewrites the line where the arrow has been displayed, without the arrow. With well working screens, only the affacted part could be rewritten.</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (upDirection &amp;&amp; arrowPos == 0) arrowPos = opts.size() - 1; <span class="comment">//If the first option has been selected and the arrow moves up, the last option will be selected.</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!upDirection &amp;&amp; arrowPos == opts.size() - 1) arrowPos = 0; <span class="comment">//If the last option has been selected and the arrow moves down, the first option will be selected.</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">else</span> upDirection ? arrowPos-- : arrowPos++; <span class="comment">//If no circular step happens, the neighbouring option in the proper direction will be selected.</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(arrowPos + 1, <span class="stringliteral">&quot; &gt; &quot;</span> + opts[arrowPos].first); <span class="comment">//Rewrites the line where the arrow should be displayed, with the arrow. With well working screens, only the affacted part could be rewritten.</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
@@ -341,21 +336,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Used to display a <a class="el" href="classPage.html">Page</a> on the screen. </p>
-<p>&lt; Clears the screen. It is done for insuring the lack of glitches on the screen. With well working screens, it only adds unnecessary delay.</p>
-<p>&lt; Writes the title in the first row.</p>
-<p>&lt; Writes each option's text part.</p>
-<p>&lt; Fills all other lines</p>
-<p>&lt; Rewrites the line where the arrow should be displayed, with the arrow. With well working screens, only the affacted part could be rewritten.</p>
 
 <p>Reimplemented from <a class="el" href="classPage.html#a2ee3bb8e956c87fa76b2d12633e24f38">Page</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="page_8h_source.html#l00098">98</a> of file <a class="el" href="page_8h_source.html">page.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="classScreen.html#ab32bde1aa5f6e856b493efc2e9d5f991">Screen::clear</a>(); </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(0, <a class="code" href="classPage.html#aa91345488f39e9592ab3b411f42e1db5">title</a>); </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">short</span> line = 1; line &lt;= opts.size(); line++) <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(line, <span class="stringliteral">&quot;   &quot;</span> + opts[line - 1].first); </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">short</span> line = opts.size() + 1; line &lt; HEIGHT; line++) <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(line, <span class="stringliteral">&quot;&quot;</span>); </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(arrowPos + 1, <span class="stringliteral">&quot; &gt; &quot;</span> + opts[arrowPos].first); </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="classScreen.html#ab32bde1aa5f6e856b493efc2e9d5f991">Screen::clear</a>(); <span class="comment">//Clears the screen. It is done for insuring the lack of glitches on the screen. With well working screens, it only adds unnecessary delay.</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(0, <a class="code" href="classPage.html#aa91345488f39e9592ab3b411f42e1db5">title</a>); <span class="comment">//Writes the title in the first row.</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">short</span> line = 1; line &lt;= opts.size(); line++) <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(line, <span class="stringliteral">&quot;   &quot;</span> + opts[line - 1].first); <span class="comment">//Writes each option&#39;s text part.</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">short</span> line = opts.size() + 1; line &lt; HEIGHT; line++) <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(line, <span class="stringliteral">&quot;&quot;</span>); <span class="comment">//Fills all other lines.</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="classScreen.html#aba5fad51c3d3cb50421cc78705c5e333">Screen::writeLine</a>(arrowPos + 1, <span class="stringliteral">&quot; &gt; &quot;</span> + opts[arrowPos].first); <span class="comment">//Rewrites the line where the arrow should be displayed, with the arrow. With well working screens, only the affacted part could be rewritten.</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
