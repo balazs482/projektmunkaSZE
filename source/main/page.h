@@ -55,7 +55,7 @@ private:
 public:
   /**
    * Constructor.
-   * @title Title of the page.
+   * @parameter title Title of the page.
    */
   MenuPage(std::string title) : Page(title) {}
   /**
@@ -116,7 +116,7 @@ class MonitoringPage : public Page
 private:
   /**
    * Constructor.
-   * @title Title of the page.
+   * @parameter title Title of the page.
    */
   MonitoringPage(std::string title) : Page(title) {}
   bool* motionStatePointer; /**< Pointer to the variable storing the motion sensor reading. Used to display the motion state. */
