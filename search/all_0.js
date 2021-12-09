@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['clear_0',['clear',['../classScreen.html#ab32bde1aa5f6e856b493efc2e9d5f991',1,'Screen']]]
+  ['addopt_0',['addOpt',['../classMenuPage.html#a43824a01d091d5c116edd9b18c32dd97',1,'MenuPage']]]
 ];

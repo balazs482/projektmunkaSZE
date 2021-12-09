@@ -77,17 +77,17 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;#include &quot;screen.h&quot;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;#include &quot;page.h&quot;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;///GPIO names</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;//GPIO names</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;#define light A0</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;#define motion 10</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;#define upButton 12</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;#define downButton 13</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;#define okButton 14</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;///constant algorythm variables</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;//constant algorythm variables</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;constexpr short monitoringRefreshRate = 1;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;///algorythm variables</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;//algorythm variables</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;short screenTimer, bulbTimer, lightTreshold;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;bool bulb = false, powerSaveMode = true, autoMode;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;unsigned long lastTriggerTime = 0, buttonPressTime = 0, monitoringRefreshTime = 0;</div>
@@ -102,15 +102,15 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;MenuPage overridePage = MenuPage(&quot;OVERRIDE MODE&quot;);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;MonitoringPage monitoringPage = monitoringPage.getInstance();</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;///setup</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;//setup</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;void setup()</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  ///screen initialization</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  //screen initialization</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  Wire.begin();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  oled.init();</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  oled.clearDisplay();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  ///accessing pins</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  //accessing pins</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  pinMode(upButton, INPUT);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  pinMode(downButton, INPUT);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  pinMode(okButton, INPUT);</div>
@@ -119,7 +119,7 @@ $(function() {
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  pinMode(LED_BUILTIN, OUTPUT);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  digitalWrite(LED_BUILTIN, HIGH);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  ///filling pages</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  //filling pages</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  mainMenuPage.addOpt(&quot;Bulb timer&quot;);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  mainMenuPage.addOpt(&quot;Light sens&quot;);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  mainMenuPage.addOpt(&quot;Screen timer&quot;);</div>
@@ -149,7 +149,7 @@ $(function() {
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  monitoringPage.setLightValuePointer(&amp;lightValue);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  monitoringPage.setMotionStatePointer(&amp;motionState);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  ///assigning values from page options to optional values</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  //assigning values from page options to optional values</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  lightTresholdPage.setArrowPos(2);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  lightTreshold = lightTresholdPage.getOptValue(lightTresholdPage.getArrowPos());</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
@@ -162,7 +162,7 @@ $(function() {
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  overridePage.setArrowPos(0);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  autoMode = false;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  ///setting baud rate</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  //setting baud rate</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  Serial.begin(115200);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
@@ -171,11 +171,11 @@ $(function() {
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;void loop()</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  ///sensor read</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  //sensor read</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  lightValue = analogRead(light); //&lt;store light sensor value</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  motionState = digitalRead(motion); //&lt;store motion sensor state</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  ///button actions</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  //button actions</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  if (digitalRead(upButton) &amp;&amp; !powerSaveMode) //&lt;if up button is pressed and screen is on</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    buttonPressTime = millis(); //&lt;store up button press time</div>
@@ -241,14 +241,14 @@ $(function() {
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    currentPage-&gt;printPage();</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  }</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  ///refresh if monitoring page</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  //refresh if monitoring page</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  if (currentPage == &amp;monitoringPage &amp;&amp; (unsigned long)(millis() - monitoringRefreshTime) &gt; monitoringRefreshRate * 1000) //&lt;if monitoring page is active and enough time has elapsed since the last refresh</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  {</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    currentPage-&gt;refreshPage();</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    monitoringRefreshTime = millis();</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  }</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  ///powerSaveMode activation</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  //powerSaveMode activation</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  if (!powerSaveMode &amp;&amp; (unsigned long)(millis() - buttonPressTime) &gt; screenTimer * 1000) //&lt;if screen is on and enough time has elapsed since the last button press</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  {</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    powerSaveMode = true;</div>
@@ -259,7 +259,7 @@ $(function() {
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  if (autoMode)</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    ///trigger bulb</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    //trigger bulb</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    if (motionState) //&lt;if motion has just been detected</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    {</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      lastTriggerTime = millis(); //&lt;store motion detection time</div>
@@ -271,7 +271,7 @@ $(function() {
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      }</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    ///turn off bulb</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    //turn off bulb</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    else if (bulb &amp;&amp; (unsigned long)(millis() - lastTriggerTime) &gt; bulbTimer * 1000) //&lt;else if bulb is on and enough time has elapsed since the last trigger</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    {</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      bulb = false;</div>
@@ -279,7 +279,7 @@ $(function() {
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  }</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  ///serial monitoring values</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  //serial monitoring values</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  std::cout &lt;&lt; &quot;Bulb: &quot; &lt;&lt; (bulb ? &quot;ON&quot; : &quot;OFF&quot;)</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            &lt;&lt; &quot;, Motion: &quot; &lt;&lt; (motionState ? &quot;YES&quot; : &quot;NO&quot;)</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            &lt;&lt; &quot;, Time: &quot; &lt;&lt; (unsigned long)(millis() - lastTriggerTime) / 1000 &lt;&lt; &quot; seconds&quot;</div>
