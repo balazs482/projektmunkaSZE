@@ -55,7 +55,7 @@ private:
 public:
   /**
    * Constructor.
-   * @parameter title Title of the page.
+   * @param title Title of the page.
    */
   MenuPage(std::string title) : Page(title) {}
   /**
